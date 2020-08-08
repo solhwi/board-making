@@ -118,7 +118,7 @@ const styles = theme => ({
       completed: 0
     });
     this.callApi()
-    .then (res => this.setState({customers: res}))
+    .then (res => this.setState({writings: res}))
     .catch(err => console.log(err));
 
   }
@@ -133,12 +133,12 @@ const styles = theme => ({
     this.timer = setInterval(this.progress,20); 
     // 0.02초마다 this.progress함수가실행됨
     this.callApi()
-      .then (res => this.setState({customers: res}))
+      .then (res => this.setState({writings: res}))
       .catch(err => console.log(err));
   }
 
   callApi = async() => {
-    const response = await fetch('/api/customers');
+    const response = await fetch('/api/writings');
     console.log(response)
     const body = await response.json();
     console.log(body);
@@ -149,7 +149,7 @@ const styles = theme => ({
   render(){
 
     const {classes} = this.props;
-    const cellList = ["번호", "제목", "작성자", "미리보기", "작성일", "설정"];
+    const cellList = ["번호", "미리보기", "제목", "작성자", "작성일", "설정"];
     return (
       <div className={classes.root}>
            <AppBar position="static">
@@ -184,6 +184,8 @@ const styles = theme => ({
 
 
       <div className={classes.menu}>
+      
+      {/* 로그인창 넣기 */}
       <WritingAdd
          stateRefresh={this.stateRefresh} 
       />        
@@ -202,16 +204,16 @@ const styles = theme => ({
             </TableHead>
             <TableBody>
             {this.state.writings && typeof this.state.writings === 'object' 
-            ? this.state.customers.map( c => {
+            ? this.state.writings.map( c => {
                 return( 
                 <Writing
                   stateRefresh= {this.stateRefresh}
                   key={c.id}
                   id={c.id}
                   image={c.image}
-                  write={c.write}
-                  name={c.name}
-                  day={c.day}
+                  title={c.title}
+                  userName={c.userName}
+                  day={c.createdDate}
                 />);})
               : <TableRow>
                   <TableCell colSpan="6" align="center">

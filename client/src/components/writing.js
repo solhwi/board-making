@@ -9,9 +9,9 @@ class Writing extends Component{
       return(
             <TableRow>
                 <TableCell>{this.props.id}</TableCell> 
-                <TableCell>{this.props.title}</TableCell> 
+                <TableCell><img src ={this.props.image}/></TableCell>
+                <TableCell>{this.props.title}</TableCell>  
                 <TableCell>{this.props.userName}</TableCell> 
-                <TableCell><img src ={this.props.image}/></TableCell> 
                 <TableCell>{this.props.day}</TableCell> 
                 <TableCell>
                 <WritingDelete 

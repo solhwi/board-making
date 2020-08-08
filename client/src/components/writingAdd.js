@@ -57,8 +57,7 @@ class WritingAdd extends Component {
         formData.append('image', this.state.file)
         formData.append('title', this.state.title)
         formData.append('context', this.state.context)
-        formData.append('name', this.state.userName)
-        formData.append('day', this.state.day)
+        formData.append('userName', this.state.userName)
 
         const config = {
             headers: {
@@ -143,21 +142,17 @@ class WritingAdd extends Component {
                         ></TextField><br/>
 
                         <TextField
-                          label="내용" type="text" name="context" 
+                          label="내용" type="longtext" name="context" 
                          value={this.state.context}
                          onChange={this.handleValueChange}
                         ></TextField><br/>
 
                         <TextField
-                          label="성별" type="text" name="userName" 
+                          label="작성자명" type="text" name="userName" 
                          value={this.state.userName}
                          onChange={this.handleValueChange}
                         ></TextField><br/>
-                        <TextField
-                          label="직업" type="text" name="day" 
-                         value={this.state.day}
-                         onChange={this.handleValueChange}
-                        ></TextField>
+                        
                     </DialogContent>
 
                     <DialogActions>

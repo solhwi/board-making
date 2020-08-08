@@ -2,6 +2,10 @@ const express = require('express');
 const bodyParser= require('body-parser');
 const app = express();
 const port = process.env.PORT || 5000;
+const moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
+
 
 app.use(bodyParser.json());
 // api는 json의 형식으로 데이터를 전송함
@@ -37,13 +41,15 @@ app.get('/api/writings', (req, res) => {
 app.use('/image', express.static('./upload'));
 
 app.post('/api/writings', upload.single('image'), (req, res) => {
-    let sql = 'INSERT INTO BOARD VALUES (null, ?, ?, ?, ?, now(), 0)';
+    let sql = 'INSERT INTO BOARD VALUES (null, ?, ?, ?, ?, ?, 0)';
     let image = '/image/' + req.file.filename; //multer가 filename을 겹치지 않게 설정
+
     let title = req.body.title;
     let context = req.body.context;
     let userName = req.body.userName;
+    let date = moment().format('YYYY-MM-DD HH:mm:ss');
 
-    let params = [image, userName, title, context];
+    let params = [image, title, context, userName, date];
 
     connection.query(sql, params, 
         (err, rows, fields) => {
