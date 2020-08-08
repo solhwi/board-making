@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; // {component}가 있어야 extends Component 가능
 import './App.css';
-import writing from './components/writing';
+import Writing from './components/writing';
+import WritingAdd from './components/writingAdd';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
@@ -9,7 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import {withStyles} from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import writingAdd from './components/writingAdd';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -114,7 +114,7 @@ const styles = theme => ({
 
   stateRefresh = () => {
     this.setState({
-      customers: '',
+      writings: '',
       completed: 0
     });
     this.callApi()
@@ -149,7 +149,7 @@ const styles = theme => ({
   render(){
 
     const {classes} = this.props;
-    const cellList = ["번호", "미리보기", "제목", "작성자", "작성일", "설정"];
+    const cellList = ["번호", "제목", "작성자", "미리보기", "작성일", "설정"];
     return (
       <div className={classes.root}>
            <AppBar position="static">
@@ -184,7 +184,7 @@ const styles = theme => ({
 
 
       <div className={classes.menu}>
-      <CustomerAdd
+      <WritingAdd
          stateRefresh={this.stateRefresh} 
       />        
       </div>
@@ -204,7 +204,7 @@ const styles = theme => ({
             {this.state.writings && typeof this.state.writings === 'object' 
             ? this.state.customers.map( c => {
                 return( 
-                <Customer
+                <Writing
                   stateRefresh= {this.stateRefresh}
                   key={c.id}
                   id={c.id}
@@ -233,4 +233,4 @@ const styles = theme => ({
   
 }
 
-export default App;
+export default withStyles(styles)(App);

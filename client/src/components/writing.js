@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import CustomerDelete from './CustomerDelete';
+import WritingDelete from './writingDelete';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 
-class writing extends Component{
+class Writing extends Component{
     render(){
       return(
             <TableRow>
@@ -14,7 +14,7 @@ class writing extends Component{
                 <TableCell><img src ={this.props.image}/></TableCell> 
                 <TableCell>{this.props.day}</TableCell> 
                 <TableCell>
-                <CustomerDelete 
+                <WritingDelete 
                     stateRefresh={this.props.stateRefresh}
                     id={this.props.id}
                 />
@@ -25,4 +25,4 @@ class writing extends Component{
 }
 
 // this는 해당 Component를 뜻함 Component의 props가 가진 name
-export default Customer;
+export default Writing;

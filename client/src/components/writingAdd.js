@@ -16,7 +16,7 @@ const styles = theme => ({
     }
 })
 
-class CustomerAdd extends Component {
+class WritingAdd extends Component {
 
     constructor(props) {
         super(props);
@@ -180,4 +180,4 @@ class CustomerAdd extends Component {
     }
 }
 
-export default withStyles(styles)(CustomerAdd);
+export default withStyles(styles)(WritingAdd);

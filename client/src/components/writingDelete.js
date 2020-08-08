@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-class CustomerDelete extends Component {
+class WritingDelete extends Component {
 
     constructor(props) {
         super(props)
@@ -74,4 +74,4 @@ class CustomerDelete extends Component {
     }
 }
 
-export default CustomerDelete;
+export default WritingDelete;
